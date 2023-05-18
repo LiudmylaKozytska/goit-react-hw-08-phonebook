@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/operations';
+import { getContacts } from 'redux/contacts/selectors';
 import {
   alertContactInclude,
   alertAddContactSuccess,
@@ -19,31 +19,42 @@ import { ReactComponent as PersonIcon } from '../icons/personIcon.svg';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setNumber] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  const handleNameChange = event => {
-    setName(event.currentTarget.value);
-  };
+  // const handleNameChange = event => {
+  //   setName(event.currentTarget.value);
+  // };
 
-  const handleNumberChange = event => {
-    setNumber(event.currentTarget.value);
+  // const handleNumberChange = event => {
+  //   setNumber(event.currentTarget.value);
+  // };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    name === 'name' ? setName(value) : setNumber(value);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
+    const contactObj = {
+      name,
+      number,
+    };
 
-    const contactIncludes = contacts.some(contact => contact.name === name);
+    const contactIncludes = contacts.some(
+      contact => contact.name === contactObj.name
+    );
 
     if (contactIncludes) {
-      alertContactInclude(name);
+      alertContactInclude(contactObj.name);
       return;
     } else {
-      alertAddContactSuccess(name);
+      alertAddContactSuccess(contactObj.name);
     }
 
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact(contactObj));
     setName('');
     setNumber('');
   };
@@ -63,7 +74,7 @@ export const ContactForm = () => {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             placeholder="Type name"
             value={name}
-            onChange={handleNameChange}
+            onChange={handleChange}
             required
           />
         </Label>
@@ -78,8 +89,8 @@ export const ContactForm = () => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             placeholder="Type number"
             required
-            value={phone}
-            onChange={handleNumberChange}
+            value={number}
+            onChange={handleChange}
           />
         </Label>
         <Button type="submit">Add contact</Button>
