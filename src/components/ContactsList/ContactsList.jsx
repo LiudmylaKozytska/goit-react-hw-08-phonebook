@@ -18,15 +18,23 @@ export const ContactsList = () => {
     selectVisibleContacts(state, contacts, filter)
   );
 
+  const sortedContacts = visibleContacts.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
+  const capitalizeName = name => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
+
   return (
     <List>
       {isLoading && !error && <b>Loading...</b>}
       {error && <p>Oops, something went wrong</p>}
-      {visibleContacts.map(({ id, name, number, onClick }) => (
+      {sortedContacts.map(({ id, name, number, onClick }) => (
         <ContactItem
           key={id}
           id={id}
-          name={name}
+          name={capitalizeName(name)}
           number={number}
           onClick={() => onClick(id)}
         />

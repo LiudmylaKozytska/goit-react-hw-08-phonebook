@@ -1,35 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { TfiClose } from 'react-icons/tfi';
 import { addContact } from 'redux/contacts/operations';
 import { getContacts } from 'redux/contacts/selectors';
 import {
   alertContactInclude,
   alertAddContactSuccess,
 } from 'components/Alert/Alert';
+import { Label, FormIcon, CloseButton } from './ContactFormStyle';
 import {
-  TabletContainer,
-  Title,
+  Form,
   Input,
   Button,
-  Label,
-  FormIcon,
-} from './ContactFormStyle';
+  StyledComponent,
+  Ellipse,
+  EllipseGroup,
+  EllipseGroupSecond,
+  EllipseGroupThird,
+  StyledLines,
+  FirstLine,
+  SecondLine,
+  ThirdLine,
+  FourLine,
+} from 'components/LoginForm/LoginFormStyled';
 import { ReactComponent as CallIcon } from '../icons/callIcon.svg';
 import { ReactComponent as PersonIcon } from '../icons/personIcon.svg';
 
-export const ContactForm = () => {
+export const ContactForm = ({ onClose }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-
-  // const handleNameChange = event => {
-  //   setName(event.currentTarget.value);
-  // };
-
-  // const handleNumberChange = event => {
-  //   setNumber(event.currentTarget.value);
-  // };
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -57,44 +58,91 @@ export const ContactForm = () => {
     dispatch(addContact(contactObj));
     setName('');
     setNumber('');
+
+    onClose();
   };
 
+  const handleKeyDown = event => {
+    if (event.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
-    <form onSubmit={handleSubmit}>
-      <Title>Phonebook</Title>
-      <TabletContainer>
-        <Label>
-          <FormIcon>
-            <PersonIcon width="20" height="20" fill="#0D161B"></PersonIcon>
-          </FormIcon>
-          <Input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            placeholder="Type name"
-            value={name}
-            onChange={handleChange}
-            required
-          />
-        </Label>
-        <Label>
-          <FormIcon>
-            <CallIcon width="20" height="20" fill="#0D161B"></CallIcon>
-          </FormIcon>
-          <Input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            placeholder="Type number"
-            required
-            value={number}
-            onChange={handleChange}
-          />
-        </Label>
-        <Button type="submit">Add contact</Button>
-      </TabletContainer>
-    </form>
+    <Form onSubmit={handleSubmit} onClick={e => e.stopPropagation()}>
+      <Label>
+        <FormIcon>
+          <PersonIcon
+            width="20"
+            height="20"
+            fill="
+#353540"
+          ></PersonIcon>
+        </FormIcon>
+        <Input
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          placeholder="Type name"
+          value={name}
+          onChange={handleChange}
+          required
+        />
+      </Label>
+      <Label>
+        <FormIcon>
+          <CallIcon
+            width="20"
+            height="20"
+            fill="
+#353540"
+          ></CallIcon>
+        </FormIcon>
+        <Input
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          placeholder="Type number"
+          required
+          value={number}
+          onChange={handleChange}
+        />
+      </Label>
+      <Button type="submit">Add contact</Button>
+      <CloseButton type="button" onClick={onClose}>
+        <TfiClose width="50px" height="50px" />
+      </CloseButton>
+      <StyledComponent>
+        <Ellipse /> <Ellipse /> <Ellipse /> <Ellipse />
+        <EllipseGroup>
+          <Ellipse /> <Ellipse />
+          <Ellipse /> <Ellipse />
+        </EllipseGroup>
+        <EllipseGroupSecond>
+          <Ellipse /> <Ellipse />
+          <Ellipse /> <Ellipse />
+        </EllipseGroupSecond>
+        <EllipseGroupThird>
+          <Ellipse /> <Ellipse />
+          <Ellipse /> <Ellipse />
+        </EllipseGroupThird>
+      </StyledComponent>
+      <StyledLines>
+        <FirstLine></FirstLine>
+        <SecondLine></SecondLine>
+        <ThirdLine></ThirdLine>
+        <FourLine></FourLine>
+      </StyledLines>
+    </Form>
   );
 };

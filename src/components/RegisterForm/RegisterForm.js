@@ -1,6 +1,22 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 
+import {
+  Form,
+  Input,
+  Button,
+  StyledComponent,
+  Ellipse,
+  EllipseGroup,
+  EllipseGroupSecond,
+  EllipseGroupThird,
+  StyledLines,
+  FirstLine,
+  SecondLine,
+  ThirdLine,
+  FourLine,
+} from 'components/LoginForm/LoginFormStyled.js';
+
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
@@ -18,20 +34,32 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Username
-        <input type="text" name="name" />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <Form onSubmit={handleSubmit} autoComplete="off">
+      <Input type="text" name="name" placeholder="username" />
+      <Input type="email" name="email" placeholder="e-mail" />
+      <Input type="password" name="password" pattern="password" />
+      <Button type="submit">Register</Button>
+      <StyledComponent>
+        <Ellipse /> <Ellipse /> <Ellipse /> <Ellipse />
+        <EllipseGroup>
+          <Ellipse /> <Ellipse />
+          <Ellipse /> <Ellipse />
+        </EllipseGroup>
+        <EllipseGroupSecond>
+          <Ellipse /> <Ellipse />
+          <Ellipse /> <Ellipse />
+        </EllipseGroupSecond>
+        <EllipseGroupThird>
+          <Ellipse /> <Ellipse />
+          <Ellipse /> <Ellipse />
+        </EllipseGroupThird>
+      </StyledComponent>
+      <StyledLines>
+        <FirstLine></FirstLine>
+        <SecondLine></SecondLine>
+        <ThirdLine></ThirdLine>
+        <FourLine></FourLine>
+      </StyledLines>
+    </Form>
   );
 };

@@ -1,9 +1,22 @@
 @import-normalize; /* bring in normalize.css styles */
+/* 
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/pacifico.ttf') format('cursive');
+} */
+
+@font-face {
+  font-family: 'Pacifico';
+  src: local('Pacifico'), url('fonts/pacifico.ttf') format('cursive');
+}
 
 body {
   margin: 0;
-  font-family: 'MuseoModerno';
-    background-color: #FBFAF7;
+  font-family: 'Georgia';
+    background-color: #ffffff;
+    color: #353540;
+    font-size: 18px;
+      line-height: 34px;
 }
 
 ul {
@@ -19,6 +32,11 @@ p,
 li {
   margin: 0;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .btn {

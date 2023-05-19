@@ -4,30 +4,27 @@ export const Item = styled.li`
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: space-between;
 
-  background: #ffffff;
-
-  box-shadow: 0px 6px 14px rgba(25, 31, 52, 0.06);
-  border-radius: 6px;
+  border-bottom: 1px solid #eeeeee;
 
   margin: 6px;
   padding: 6px;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus {
-    background-color: #fffdf8;
-    box-shadow: 0px 6px 14px rgba(25, 31, 52, 0.18);
-  }
-
-  ${'' /* cursor: pointer; */}
 `;
 
 export const Button = styled.button`
   cursor: pointer;
   border: none;
-  background-color: transparent;
-  fill: #f37825;
+  padding: 5px 6px;
+  border-radius: 50%;
+  background-color: #fff8f8;
+  fill: #ee4f3c;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #ee4f3c;
+    fill: #fff8f8;
+  }
 `;

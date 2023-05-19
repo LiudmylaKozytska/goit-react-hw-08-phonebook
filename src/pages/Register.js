@@ -1,14 +1,15 @@
 import { Helmet } from 'react-helmet';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import { LoginSection } from './Login/LoginStyled';
 
 const Register = () => {
   return (
-    <div>
+    <LoginSection>
       <Helmet>
         <title>Registration</title>
       </Helmet>
       <RegisterForm />
-    </div>
+    </LoginSection>
   );
 };
 

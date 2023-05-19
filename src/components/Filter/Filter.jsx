@@ -1,8 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/contacts/filterSlice';
-
-import { Title, Input } from 'components/ContactForm/ContactFormStyle';
-import { Label } from './FilterStyle';
+import {
+  Title,
+  FilterSection,
+  Label,
+  Input,
+} from 'components/Filter/FilterStyle';
 
 export const FilterContacts = () => {
   const dispatch = useDispatch();
@@ -12,16 +15,13 @@ export const FilterContacts = () => {
   };
 
   return (
-    <>
-      <Title>Contacts</Title>
-      <Label>
-        Find contacts by name
-        <Input
-          type="text"
-          placeholder="Type name"
-          onChange={handleFilterChange}
-        ></Input>
-      </Label>
-    </>
+    <FilterSection>
+      <Title>Your contacts</Title>
+      <Input
+        type="text"
+        placeholder="Find by name..."
+        onChange={handleFilterChange}
+      ></Input>
+    </FilterSection>
   );
 };
