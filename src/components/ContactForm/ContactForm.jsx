@@ -74,7 +74,7 @@ export const ContactForm = ({ onClose }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [handleKeyDown]);
 
   return (
     <Form onSubmit={handleSubmit} onClick={e => e.stopPropagation()}>
