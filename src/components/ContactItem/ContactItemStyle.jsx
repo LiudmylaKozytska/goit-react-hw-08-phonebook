@@ -18,13 +18,10 @@ export const Button = styled.button`
   padding: 5px 6px;
   border-radius: 50%;
   background-color: #fff8f8;
-  fill: #ee4f3c;
 
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: #ee4f3c;
-    fill: #fff8f8;
+    background-color: #eeeeee;
   }
 `;

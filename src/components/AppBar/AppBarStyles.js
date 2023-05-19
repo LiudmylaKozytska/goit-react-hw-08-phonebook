@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Header = styled.header`
   display: flex;
-  padding: 16px 16px 16px 48px;
+  padding: 16px;
   align-items: center;
   justify-content: space-between;
 
@@ -38,4 +38,21 @@ export const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const AddContactIcon = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 50%;
+  border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: #ee4f3c;
+  }
 `;

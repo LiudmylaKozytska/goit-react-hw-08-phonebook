@@ -1,21 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-
-import {
-  Form,
-  Input,
-  Button,
-  StyledComponent,
-  Ellipse,
-  EllipseGroup,
-  EllipseGroupSecond,
-  EllipseGroupThird,
-  StyledLines,
-  FirstLine,
-  SecondLine,
-  ThirdLine,
-  FourLine,
-} from 'components/LoginForm/LoginFormStyled.js';
+import { Form, Input, Button } from 'components/LoginForm/LoginFormStyled.js';
+import { ModalStyle } from 'components/ModalStyle/ModalStyle';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -37,29 +23,9 @@ export const RegisterForm = () => {
     <Form onSubmit={handleSubmit} autoComplete="off">
       <Input type="text" name="name" placeholder="username" />
       <Input type="email" name="email" placeholder="e-mail" />
-      <Input type="password" name="password" pattern="password" />
-      <Button type="submit">Register</Button>
-      <StyledComponent>
-        <Ellipse /> <Ellipse /> <Ellipse /> <Ellipse />
-        <EllipseGroup>
-          <Ellipse /> <Ellipse />
-          <Ellipse /> <Ellipse />
-        </EllipseGroup>
-        <EllipseGroupSecond>
-          <Ellipse /> <Ellipse />
-          <Ellipse /> <Ellipse />
-        </EllipseGroupSecond>
-        <EllipseGroupThird>
-          <Ellipse /> <Ellipse />
-          <Ellipse /> <Ellipse />
-        </EllipseGroupThird>
-      </StyledComponent>
-      <StyledLines>
-        <FirstLine></FirstLine>
-        <SecondLine></SecondLine>
-        <ThirdLine></ThirdLine>
-        <FourLine></FourLine>
-      </StyledLines>
+      <Input type="password" name="password" />
+      <Button type="submit">Sign In</Button>
+      <ModalStyle />
     </Form>
   );
 };

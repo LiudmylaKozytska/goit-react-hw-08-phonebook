@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import { alertDeleteContactSuccess } from 'components/Alert/Alert';
 import { Item, Button } from './ContactItemStyle';
-import { ReactComponent as DeleteIcon } from '../icons/deleteIcon.svg';
+import { AiFillDelete } from 'react-icons/ai';
 
 export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export const ContactItem = ({ id, name, number }) => {
       <Avatar sx={{ bgcolor: generateColor() }}>{name.substring(0, 2)}</Avatar>
       {name}: {number}
       <Button type="button" onClick={handleDelete}>
-        <DeleteIcon width="20" height="20"></DeleteIcon>
+        <AiFillDelete size={20} fill="#ee4f3c" />
       </Button>
     </Item>
   );

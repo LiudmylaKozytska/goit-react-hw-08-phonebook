@@ -21,6 +21,7 @@ export const UserButton = styled.button`
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     box-shadow: 3px 5px 9px rgba(204, 204, 204, 0.7);

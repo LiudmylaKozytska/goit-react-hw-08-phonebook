@@ -18,7 +18,8 @@ export const CloseButton = styled.button`
   background-color: rgba(238, 79, 60, 0.5);
   border-radius: 50%;
   border: none;
-  padding: 16px;
+  padding: 24px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;

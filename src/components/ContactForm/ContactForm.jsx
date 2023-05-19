@@ -8,23 +8,10 @@ import {
   alertAddContactSuccess,
 } from 'components/Alert/Alert';
 import { Label, FormIcon, CloseButton } from './ContactFormStyle';
-import {
-  Form,
-  Input,
-  Button,
-  StyledComponent,
-  Ellipse,
-  EllipseGroup,
-  EllipseGroupSecond,
-  EllipseGroupThird,
-  StyledLines,
-  FirstLine,
-  SecondLine,
-  ThirdLine,
-  FourLine,
-} from 'components/LoginForm/LoginFormStyled';
+import { Form, Input, Button } from 'components/LoginForm/LoginFormStyled';
 import { ReactComponent as CallIcon } from '../icons/callIcon.svg';
 import { ReactComponent as PersonIcon } from '../icons/personIcon.svg';
+import { ModalStyle } from 'components/ModalStyle/ModalStyle';
 
 export const ContactForm = ({ onClose }) => {
   const [name, setName] = useState('');
@@ -120,29 +107,9 @@ export const ContactForm = ({ onClose }) => {
       </Label>
       <Button type="submit">Add contact</Button>
       <CloseButton type="button" onClick={onClose}>
-        <TfiClose width="50px" height="50px" />
+        <TfiClose size={30} />
       </CloseButton>
-      <StyledComponent>
-        <Ellipse /> <Ellipse /> <Ellipse /> <Ellipse />
-        <EllipseGroup>
-          <Ellipse /> <Ellipse />
-          <Ellipse /> <Ellipse />
-        </EllipseGroup>
-        <EllipseGroupSecond>
-          <Ellipse /> <Ellipse />
-          <Ellipse /> <Ellipse />
-        </EllipseGroupSecond>
-        <EllipseGroupThird>
-          <Ellipse /> <Ellipse />
-          <Ellipse /> <Ellipse />
-        </EllipseGroupThird>
-      </StyledComponent>
-      <StyledLines>
-        <FirstLine></FirstLine>
-        <SecondLine></SecondLine>
-        <ThirdLine></ThirdLine>
-        <FourLine></FourLine>
-      </StyledLines>
+      <ModalStyle />
     </Form>
   );
 };

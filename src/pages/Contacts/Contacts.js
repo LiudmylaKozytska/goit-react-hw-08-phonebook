@@ -7,6 +7,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { getIsLoading } from 'redux/contacts/selectors';
 import { Tittle, ContactsSection, Image } from 'pages/Contacts/ContactsStyled';
 import woman from 'images/woman.webp';
+import { LinearProgress } from '@mui/material';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -22,9 +23,8 @@ const Contacts = () => {
         <Helmet>
           <Tittle>Your contacts</Tittle>
         </Helmet>
-        <div>{isLoading && 'Request in progress...'}</div>
         <FilterContacts />
-        <ContactsList />
+        {isLoading ? <LinearProgress /> : <ContactsList />}
       </div>
       <Image src={woman} alt="woman with phone" />
     </ContactsSection>
