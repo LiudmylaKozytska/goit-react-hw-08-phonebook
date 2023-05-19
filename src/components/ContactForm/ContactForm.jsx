@@ -62,19 +62,19 @@ export const ContactForm = ({ onClose }) => {
     onClose();
   };
 
-  const handleKeyDown = event => {
-    if (event.key === 'Escape') {
-      onClose();
-    }
-  };
-
   useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown]);
+  }, [onClose]);
 
   return (
     <Form onSubmit={handleSubmit} onClick={e => e.stopPropagation()}>
