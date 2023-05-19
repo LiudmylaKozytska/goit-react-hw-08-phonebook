@@ -23,7 +23,7 @@ export const RegisterForm = () => {
     <Form onSubmit={handleSubmit} autoComplete="off">
       <Input type="text" name="name" placeholder="username" />
       <Input type="email" name="email" placeholder="e-mail" />
-      <Input type="password" name="password" />
+      <Input type="password" name="password" placeholder="password" />
       <Button type="submit">Sign In</Button>
       <ModalStyle />
     </Form>
